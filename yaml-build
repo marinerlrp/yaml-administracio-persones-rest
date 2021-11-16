@@ -1,291 +1,394 @@
-apiVersion: apps.openshift.io/v1
-kind: DeploymentConfig
-metadata:
-  annotations:
-    openshift.io/generated-by: OpenShiftNewApp
-  creationTimestamp: "2021-11-16T08:49:55Z"
-  generation: 2
-  labels:
-    app: administracio-persones-rest
-  managedFields:
-  - apiVersion: apps.openshift.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:openshift.io/generated-by: {}
-        f:labels:
-          .: {}
-          f:app: {}
-      f:spec:
-        f:replicas: {}
-        f:selector:
-          .: {}
-          f:app: {}
-          f:deploymentconfig: {}
-        f:strategy:
-          f:activeDeadlineSeconds: {}
-          f:rollingParams:
+apiVersion: v1
+items:
+- apiVersion: build.openshift.io/v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2021-11-16T09:01:13Z"
+    generation: 2
+    labels:
+      app: administracio-persones-rest
+    managedFields:
+    - apiVersion: build.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
             .: {}
-            f:intervalSeconds: {}
-            f:maxSurge: {}
-            f:maxUnavailable: {}
-            f:timeoutSeconds: {}
-            f:updatePeriodSeconds: {}
-          f:type: {}
-        f:template:
-          .: {}
-          f:metadata:
+            f:openshift.io/generated-by: {}
+          f:labels:
             .: {}
-            f:annotations:
-              .: {}
-              f:openshift.io/generated-by: {}
-            f:creationTimestamp: {}
-            f:labels:
-              .: {}
-              f:app: {}
-              f:deploymentconfig: {}
-          f:spec:
-            .: {}
-            f:containers:
-              .: {}
-              k:{"name":"administracio-persones-rest"}:
-                .: {}
-                f:imagePullPolicy: {}
-                f:name: {}
-                f:ports:
-                  .: {}
-                  k:{"containerPort":10180,"protocol":"TCP"}:
-                    .: {}
-                    f:containerPort: {}
-                    f:protocol: {}
-                f:resources: {}
-                f:terminationMessagePath: {}
-                f:terminationMessagePolicy: {}
-            f:dnsPolicy: {}
-            f:restartPolicy: {}
-            f:schedulerName: {}
-            f:securityContext: {}
-            f:terminationGracePeriodSeconds: {}
-    manager: oc
-    operation: Update
-    time: "2021-11-16T08:49:55Z"
-  - apiVersion: apps.openshift.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:spec:
-        f:template:
-          f:spec:
-            f:containers:
-              k:{"name":"administracio-persones-rest"}:
-                f:image: {}
-        f:triggers: {}
-      f:status:
-        f:availableReplicas: {}
-        f:conditions:
-          .: {}
-          k:{"type":"Available"}:
-            .: {}
-            f:lastTransitionTime: {}
-            f:lastUpdateTime: {}
-            f:message: {}
-            f:status: {}
-            f:type: {}
-          k:{"type":"Progressing"}:
-            .: {}
-            f:lastTransitionTime: {}
-            f:lastUpdateTime: {}
-            f:message: {}
-            f:reason: {}
-            f:status: {}
-            f:type: {}
-        f:details:
-          .: {}
-          f:causes: {}
-          f:message: {}
-        f:latestVersion: {}
-        f:observedGeneration: {}
-        f:readyReplicas: {}
-        f:replicas: {}
-        f:unavailableReplicas: {}
-        f:updatedReplicas: {}
-    manager: openshift-controller-manager
-    operation: Update
-    time: "2021-11-16T08:52:52Z"
-  name: administracio-persones-rest
-  namespace: crus-cus384
-  resourceVersion: "573575369"
-  uid: fde2fc43-493a-480a-a2b0-b27268b5ff24
-spec:
-  replicas: 1
-  revisionHistoryLimit: 10
-  selector:
-    app: administracio-persones-rest
-    deploymentconfig: administracio-persones-rest
-  strategy:
-    activeDeadlineSeconds: 21600
-    resources: {}
-    rollingParams:
-      intervalSeconds: 1
-      maxSurge: 25%
-      maxUnavailable: 25%
-      timeoutSeconds: 600
-      updatePeriodSeconds: 1
-    type: Rolling
-  template:
-    metadata:
-      annotations:
-        openshift.io/generated-by: OpenShiftNewApp
-      creationTimestamp: null
-      labels:
-        app: administracio-persones-rest
-        deploymentconfig: administracio-persones-rest
-    spec:
-      containers:
-      - image: image-registry.openshift-image-registry.svc:5000/crus-cus384/administracio-persones-rest@sha256:6ebb9c48a8a595fc2d86f7e348032680d42c3d79d377df1157a417a36d8298ab
-        imagePullPolicy: Always
-        name: administracio-persones-rest
-        ports:
-        - containerPort: 10180
-          protocol: TCP
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
-  test: false
-  triggers:
-  - type: ConfigChange
-  - imageChangeParams:
-      automatic: true
-      containerNames:
-      - administracio-persones-rest
-      from:
-        kind: ImageStreamTag
-        name: administracio-persones-rest:latest
-        namespace: crus-cus384
-      lastTriggeredImage: image-registry.openshift-image-registry.svc:5000/crus-cus384/administracio-persones-rest@sha256:6ebb9c48a8a595fc2d86f7e348032680d42c3d79d377df1157a417a36d8298ab
-    type: ImageChange
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: "2021-11-16T08:52:52Z"
-    lastUpdateTime: "2021-11-16T08:52:52Z"
-    message: Deployment config has minimum availability.
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2021-11-16T08:52:24Z"
-    lastUpdateTime: "2021-11-16T08:52:53Z"
-    message: replication controller "administracio-persones-rest-1" successfully rolled
-      out
-    reason: NewReplicationControllerAvailable
-    status: "True"
-    type: Progressing
-  details:
-    causes:
-    - type: ConfigChange
-    message: config change
-  latestVersion: 1
-  observedGeneration: 2
-  readyReplicas: 1
-  replicas: 1
-  unavailableReplicas: 0
-  updatedReplicas: 1
-[root@swarmm1 ~]# oc get bc/administracio-persones-rest -o yaml
-apiVersion: build.openshift.io/v1
-kind: BuildConfig
-metadata:
-  annotations:
-    openshift.io/generated-by: OpenShiftNewApp
-  creationTimestamp: "2021-11-16T08:49:55Z"
-  generation: 2
-  labels:
-    app: administracio-persones-rest
-  managedFields:
-  - apiVersion: build.openshift.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:annotations:
-          .: {}
-          f:openshift.io/generated-by: {}
-        f:labels:
-          .: {}
-          f:app: {}
-      f:spec:
-        f:output:
-          f:to:
-            .: {}
-            f:kind: {}
-            f:name: {}
-        f:runPolicy: {}
-        f:source:
-          f:git:
-            .: {}
-            f:uri: {}
-          f:type: {}
-        f:strategy:
-          f:dockerStrategy:
-            .: {}
-            f:from:
+            f:app: {}
+        f:spec:
+          f:output:
+            f:to:
               .: {}
               f:kind: {}
               f:name: {}
-              f:namespace: {}
-          f:type: {}
-    manager: oc
-    operation: Update
-    time: "2021-11-16T08:49:55Z"
-  - apiVersion: build.openshift.io/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:spec:
-        f:triggers: {}
-      f:status:
-        f:lastVersion: {}
-    manager: openshift-apiserver
-    operation: Update
-    time: "2021-11-16T08:49:55Z"
-  name: administracio-persones-rest
-  namespace: crus-cus384
-  resourceVersion: "573573840"
-  uid: 8c8d4619-4b06-40e0-9bd5-65c6af8a39b8
-spec:
-  failedBuildsHistoryLimit: 5
-  nodeSelector: null
-  output:
-    to:
-      kind: ImageStreamTag
-      name: administracio-persones-rest:latest
-  postCommit: {}
-  resources: {}
-  runPolicy: Serial
-  source:
-    git:
-      uri: https://github.com/marinerlrp/administracio-persones-rest.git
-    type: Git
-  strategy:
-    dockerStrategy:
-      from:
+          f:runPolicy: {}
+          f:source:
+            f:git:
+              .: {}
+              f:uri: {}
+            f:type: {}
+          f:strategy:
+            f:dockerStrategy:
+              .: {}
+              f:from:
+                .: {}
+                f:kind: {}
+                f:name: {}
+                f:namespace: {}
+            f:type: {}
+      manager: oc
+      operation: Update
+      time: "2021-11-16T09:01:13Z"
+    - apiVersion: build.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:triggers: {}
+        f:status:
+          f:lastVersion: {}
+      manager: openshift-apiserver
+      operation: Update
+      time: "2021-11-16T09:01:14Z"
+    name: administracio-persones-rest
+    namespace: crus-cus384
+    resourceVersion: "573579728"
+    uid: f52b9332-deed-45f6-a333-4bfa49f98c6e
+  spec:
+    failedBuildsHistoryLimit: 5
+    nodeSelector: null
+    output:
+      to:
         kind: ImageStreamTag
-        name: spring-base-curs:latest
-        namespace: openshift
-    type: Docker
-  successfulBuildsHistoryLimit: 5
-  triggers:
-  - github:
-      secret: 4_2ljq39rRPznVEBZtTf
-    type: GitHub
-  - generic:
-      secret: T9vOlkQgAsZkeUtueZQz
-    type: Generic
-  - type: ConfigChange
-  - imageChange:
-      lastTriggeredImageID: image-registry.openshift-image-registry.svc:5000/openshift/spring-base-curs@sha256:00b10e19044de8408407b115108a320bfc044d0bad4706ac5900f194e3583186
-    type: ImageChange
-status:
-  lastVersion: 1
+        name: administracio-persones-rest:latest
+    postCommit: {}
+    resources: {}
+    runPolicy: Serial
+    source:
+      git:
+        uri: https://github.com/marinerlrp/administracio-persones-rest.git
+      type: Git
+    strategy:
+      dockerStrategy:
+        from:
+          kind: ImageStreamTag
+          name: spring-base-curs:latest
+          namespace: openshift
+      type: Docker
+    successfulBuildsHistoryLimit: 5
+    triggers:
+    - github:
+        secret: _nK724z_SlIPViSVgRuw
+      type: GitHub
+    - generic:
+        secret: YC70ICWEyQSrOFlKlSiJ
+      type: Generic
+    - type: ConfigChange
+    - imageChange:
+        lastTriggeredImageID: image-registry.openshift-image-registry.svc:5000/openshift/spring-base-curs@sha256:00b10e19044de8408407b115108a320bfc044d0bad4706ac5900f194e3583186
+      type: ImageChange
+  status:
+    lastVersion: 1
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2021-11-16T09:01:13Z"
+    generation: 2
+    labels:
+      app: administracio-persones-rest
+    managedFields:
+    - apiVersion: apps.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:openshift.io/generated-by: {}
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:replicas: {}
+          f:selector:
+            .: {}
+            f:app: {}
+            f:deploymentconfig: {}
+          f:strategy:
+            f:activeDeadlineSeconds: {}
+            f:rollingParams:
+              .: {}
+              f:intervalSeconds: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+              f:timeoutSeconds: {}
+              f:updatePeriodSeconds: {}
+            f:type: {}
+          f:template:
+            .: {}
+            f:metadata:
+              .: {}
+              f:annotations:
+                .: {}
+                f:openshift.io/generated-by: {}
+              f:creationTimestamp: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:deploymentconfig: {}
+            f:spec:
+              .: {}
+              f:containers:
+                .: {}
+                k:{"name":"administracio-persones-rest"}:
+                  .: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":10180,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:protocol: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+      manager: oc
+      operation: Update
+      time: "2021-11-16T09:01:13Z"
+    - apiVersion: apps.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:template:
+            f:spec:
+              f:containers:
+                k:{"name":"administracio-persones-rest"}:
+                  f:image: {}
+          f:triggers: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:details:
+            .: {}
+            f:causes: {}
+            f:message: {}
+          f:latestVersion: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:unavailableReplicas: {}
+          f:updatedReplicas: {}
+      manager: openshift-controller-manager
+      operation: Update
+      time: "2021-11-16T09:03:57Z"
+    name: administracio-persones-rest
+    namespace: crus-cus384
+    resourceVersion: "573581179"
+    uid: 9e00c844-28ca-4268-b5c2-6c737188d963
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      app: administracio-persones-rest
+      deploymentconfig: administracio-persones-rest
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: administracio-persones-rest
+          deploymentconfig: administracio-persones-rest
+      spec:
+        containers:
+        - image: image-registry.openshift-image-registry.svc:5000/crus-cus384/administracio-persones-rest@sha256:913c759e08b2c018ee26ab163fb06033192ce8a5b63e50c905d2d2cc92842030
+          imagePullPolicy: Always
+          name: administracio-persones-rest
+          ports:
+          - containerPort: 10180
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - administracio-persones-rest
+        from:
+          kind: ImageStreamTag
+          name: administracio-persones-rest:latest
+          namespace: crus-cus384
+        lastTriggeredImage: image-registry.openshift-image-registry.svc:5000/crus-cus384/administracio-persones-rest@sha256:913c759e08b2c018ee26ab163fb06033192ce8a5b63e50c905d2d2cc92842030
+      type: ImageChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2021-11-16T09:03:57Z"
+      lastUpdateTime: "2021-11-16T09:03:57Z"
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2021-11-16T09:03:40Z"
+      lastUpdateTime: "2021-11-16T09:03:58Z"
+      message: replication controller "administracio-persones-rest-1" successfully
+        rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2021-11-16T09:01:13Z"
+    labels:
+      app: administracio-persones-rest
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:openshift.io/generated-by: {}
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:ports:
+            .: {}
+            k:{"port":10180,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector:
+            .: {}
+            f:app: {}
+            f:deploymentconfig: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: oc
+      operation: Update
+      time: "2021-11-16T09:01:13Z"
+    name: administracio-persones-rest
+    namespace: crus-cus384
+    resourceVersion: "573579717"
+    selfLink: /api/v1/namespaces/crus-cus384/services/administracio-persones-rest
+    uid: be9e8418-b8ef-40a9-bc44-756faad8cfe1
+  spec:
+    clusterIP: 172.30.214.199
+    clusterIPs:
+    - 172.30.214.199
+    ports:
+    - name: 10180-tcp
+      port: 10180
+      protocol: TCP
+      targetPort: 10180
+    selector:
+      app: administracio-persones-rest
+      deploymentconfig: administracio-persones-rest
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: "2021-11-16T09:01:13Z"
+    generation: 1
+    labels:
+      app: administracio-persones-rest
+    managedFields:
+    - apiVersion: image.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:openshift.io/generated-by: {}
+          f:labels:
+            .: {}
+            f:app: {}
+      manager: oc
+      operation: Update
+      time: "2021-11-16T09:01:13Z"
+    name: administracio-persones-rest
+    namespace: crus-cus384
+    resourceVersion: "573580896"
+    uid: 472b991a-20df-4644-a34f-5d1fd4721893
+  spec:
+    lookupPolicy:
+      local: false
+  status:
+    dockerImageRepository: image-registry.openshift-image-registry.svc:5000/crus-cus384/administracio-persones-rest
+    publicDockerImageRepository: default-route-openshift-image-registry.apps.ocpnp.uib.es/crus-cus384/administracio-persones-rest
+    tags:
+    - items:
+      - created: "2021-11-16T09:03:31Z"
+        dockerImageReference: image-registry.openshift-image-registry.svc:5000/crus-cus384/administracio-persones-rest@sha256:913c759e08b2c018ee26ab163fb06033192ce8a5b63e50c905d2d2cc92842030
+        generation: 1
+        image: sha256:913c759e08b2c018ee26ab163fb06033192ce8a5b63e50c905d2d2cc92842030
+      tag: latest
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
